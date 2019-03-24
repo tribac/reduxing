@@ -1,0 +1,31 @@
+{
+  "name": "reduxing",
+  "version": "0.0.1",
+  "description": "DRY for redux",
+  "main": "dist/reduxing.js",
+  "scripts": {
+    "build": "babel src --out-dir ./dist --source-maps",
+    "test": "./node_modules/.bin/mocha --require @babel/register"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Tri-Bac Nguyen",
+    "email": "tribac@gmail.com"
+  },
+  "homepage": "https://github.com/tribac/reduxing",
+  "bugs": "https://github.com/tribac/reduxing/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tribac/reduxing.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "babel-preset-minify": "^0.5.0",
+    "mocha": "^5.2.0"
+  }
+}

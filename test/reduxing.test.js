@@ -1,7 +1,27 @@
-import { byActionType, byPosition } from '../src/reduxing';
+import reduxing, { byActionType, byPosition } from '../src/reduxing';
 import assert from 'assert';
 
-describe('can build reducer and action creators', () => {
+describe('can build reducer and action creators using default reduxing', () => {
+  const { foos, fooz, reducer } = reduxing({
+    foos: (state, action) => ({ ...state, foos: action.payload }),
+    fooz: (state, action) => ({ ...state, fooz: action.payload }),
+  });
+  const previous = { bar: 'baz' };
+
+  it('can use foos', () => {
+    const action = foos({ payload: { foo: 0 } });
+    const state = reducer(previous, action);
+    assert.deepEqual(state, { bar: 'baz', foos: { foo: 0 } });
+  });
+
+  it('can use fooz', () => {
+    const action = fooz({ payload: { foo: 1 } });
+    const state = reducer(previous, action);
+    assert.deepEqual(state, { bar: 'baz', fooz: { foo: 1 } });
+  });
+});
+
+describe('can build reducer and action creators by action type', () => {
   const { foos, fooz, reducer } = byActionType({
     foos: (state, action) => ({ ...state, foos: action.payload }),
     fooz: (state, action) => ({ ...state, fooz: action.payload }),
